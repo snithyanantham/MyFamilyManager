@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFamilyManager.API", "Services\MyFamilyManager.API\MyFamilyManager.API.csproj", "{9BFF84C6-F99C-4171-9840-79F20ABE341D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6B33B749-C8A4-4E54-8129-C03CF5F10D10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{EFED7AB0-B579-4D1B-B257-5D8A9CFAB301}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{5A025939-6DEE-450E-9DBB-A46980101716}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{4C0141D6-F7B0-4F77-8251-CD6F5A69A09A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyFamilyManager.API", "MyFamilyManager.API", "{B5671942-514D-494B-8A27-A0FE7FC39DDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{970793B1-D4EE-46AB-8D33-AD40D2436607}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BFF84C6-F99C-4171-9840-79F20ABE341D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BFF84C6-F99C-4171-9840-79F20ABE341D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BFF84C6-F99C-4171-9840-79F20ABE341D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BFF84C6-F99C-4171-9840-79F20ABE341D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9BFF84C6-F99C-4171-9840-79F20ABE341D} = {B5671942-514D-494B-8A27-A0FE7FC39DDF}
+		{EFED7AB0-B579-4D1B-B257-5D8A9CFAB301} = {6B33B749-C8A4-4E54-8129-C03CF5F10D10}
+		{5A025939-6DEE-450E-9DBB-A46980101716} = {6B33B749-C8A4-4E54-8129-C03CF5F10D10}
+		{4C0141D6-F7B0-4F77-8251-CD6F5A69A09A} = {6B33B749-C8A4-4E54-8129-C03CF5F10D10}
+		{B5671942-514D-494B-8A27-A0FE7FC39DDF} = {EFED7AB0-B579-4D1B-B257-5D8A9CFAB301}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F908B182-8422-49AC-8BFC-DF9F3C996DD7}
+	EndGlobalSection
+EndGlobal
