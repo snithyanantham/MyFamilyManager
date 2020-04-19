@@ -23,8 +23,20 @@ namespace myfamilymanager.api.host
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        readonly string AllowAllOrigins = "AllowAllOrigins";
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: AllowAllOrigins,
+                        builder =>
+                        {
+                            builder.AllowAnyOrigin();
+                        });
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
                 {
@@ -47,6 +59,8 @@ namespace myfamilymanager.api.host
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Family Manager V1");
                 c.RoutePrefix = string.Empty;
             });
+
+            app.UseCors(AllowAllOrigins);
 
             app.UseHttpsRedirection();
 
