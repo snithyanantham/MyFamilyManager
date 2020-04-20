@@ -4,11 +4,18 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>395573a5-6ce0-4c5f-9bde-d62101d8b8d1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyFamilyManager.API.Core\MyFamilyManager.API.Core.csproj" />
+    <ProjectReference Include="..\MyFamilyManager.API.Repositories\MyFamilyManager.API.Repositories.csproj" />
   </ItemGroup>
 
 

@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  
+  myfamilymanager-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionStrings__DefaultConnection=server=mysql;database=myfamilymanagerdb;uid=root;password=root
+
+  myfamilymanager-identity-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+
+  myfamilymanager-web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80

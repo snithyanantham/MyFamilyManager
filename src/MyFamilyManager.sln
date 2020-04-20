@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFamilyManager.API.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFamilyManager.API.Core", "Services\Core\MyFamilyManager.API.Core\MyFamilyManager.API.Core.csproj", "{8DEDBB58-A356-4FC9-AFEB-EDF42632BBE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFamilyManager.Identity.API", "Services\Identity\MyFamilyManager.Identity.API\MyFamilyManager.Identity.API.csproj", "{D9B36CC7-D256-4355-896C-51E7B2E46AF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFamilyManager.Identity.API", "Services\Identity\MyFamilyManager.Identity.API\MyFamilyManager.Identity.API.csproj", "{D9B36CC7-D256-4355-896C-51E7B2E46AF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFamilyManager.Web", "Web\MyFamilyManager.Web\MyFamilyManager.Web.csproj", "{6C0B47F4-E8DF-4808-8E04-50A2A7E38362}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFamilyManager.Web", "Web\MyFamilyManager.Web\MyFamilyManager.Web.csproj", "{6C0B47F4-E8DF-4808-8E04-50A2A7E38362}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D9A6A7D9-0B7C-4EA4-AF53-925706E6A54B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{6C0B47F4-E8DF-4808-8E04-50A2A7E38362}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C0B47F4-E8DF-4808-8E04-50A2A7E38362}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C0B47F4-E8DF-4808-8E04-50A2A7E38362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9A6A7D9-0B7C-4EA4-AF53-925706E6A54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9A6A7D9-0B7C-4EA4-AF53-925706E6A54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9A6A7D9-0B7C-4EA4-AF53-925706E6A54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9A6A7D9-0B7C-4EA4-AF53-925706E6A54B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
