@@ -3,12 +3,14 @@ version: '3.4'
 services:
 
   mysql:
-    image: mysql:8.0
+    image: mysql:latest
     container_name: myfamilymanager-db
     environment:
       MYSQL_USER: user
       MYSQL_PASSWORD: user
       MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
   
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -53,4 +55,4 @@ services:
     depends_on:
       - mysql  
     ports:
-      - 5000:80
+      - 5080:80
