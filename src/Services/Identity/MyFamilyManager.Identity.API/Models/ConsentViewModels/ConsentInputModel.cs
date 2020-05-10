@@ -2,17 +2,15 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace MyFamilyManager.Identity.API.Models
 {
-    public class LoginInputModel
+    public class ConsentInputModel
     {
-        [Required]
-        public string Username { get; set; }
-        [Required]
-        public string Password { get; set; }
-        public bool RememberLogin { get; set; }
+        public string Button { get; set; }
+        public IEnumerable<string> ScopesConsented { get; set; }
+        public bool RememberConsent { get; set; }
         public string ReturnUrl { get; set; }
     }
 }

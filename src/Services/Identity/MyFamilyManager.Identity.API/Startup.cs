@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyFamilyManager.Identity.API.Data;
 using MyFamilyManager.Identity.API.Models;
+using MyFamilyManager.Identity.API.Services;
 
 namespace MyFamilyManager.Identity.API
 {
@@ -32,6 +34,8 @@ namespace MyFamilyManager.Identity.API
         {
             services.AddDbContext<ApplicationDbContext>(options =>
              options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -55,7 +59,15 @@ namespace MyFamilyManager.Identity.API
 
             builder.AddDeveloperSigningCredential();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
         }
 
@@ -79,6 +91,7 @@ namespace MyFamilyManager.Identity.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

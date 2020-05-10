@@ -8,7 +8,7 @@ namespace MyFamilyManager.API.Repositories
 {
     public class FamilyRepository:BaseRepository<Family>, IFamilyRepository
     {
-        public FamilyRepository(MyFamilyManagerContext context) : base(context)
+        public FamilyRepository(MyFamilyManagerDbContext context) : base(context)
         {
 
         }

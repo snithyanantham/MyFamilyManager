@@ -9,8 +9,8 @@ namespace MyFamilyManager.API.Repositories
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private DbSet<T> localEntity;
-        protected MyFamilyManagerContext dbContext;
-        public BaseRepository(MyFamilyManagerContext context)
+        protected MyFamilyManagerDbContext dbContext;
+        public BaseRepository(MyFamilyManagerDbContext context)
         {
             this.dbContext = context;
             localEntity = context.Set<T>();

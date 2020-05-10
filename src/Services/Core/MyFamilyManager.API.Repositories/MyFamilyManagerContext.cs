@@ -3,10 +3,10 @@ using MyFamilyManager.API.Core.Models;
 
 namespace MyFamilyManager.API.Repositories
 {
-    public class MyFamilyManagerContext : DbContext
+    public class MyFamilyManagerDbContext : DbContext
     {
         public DbSet<Family> Families { get; set; }
-        public MyFamilyManagerContext(DbContextOptions<MyFamilyManagerContext> options):base(options)
+        public MyFamilyManagerDbContext(DbContextOptions<MyFamilyManagerDbContext> options):base(options)
         {
             this.Database.EnsureCreated();
         }

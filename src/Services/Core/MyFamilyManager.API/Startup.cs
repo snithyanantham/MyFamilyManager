@@ -47,7 +47,7 @@ namespace myfamilymanager.api.host
                 });
 
             services.AddScoped<IFamilyRepository, FamilyRepository>();
-            services.AddDbContext<MyFamilyManagerContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MyFamilyManagerDbContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
