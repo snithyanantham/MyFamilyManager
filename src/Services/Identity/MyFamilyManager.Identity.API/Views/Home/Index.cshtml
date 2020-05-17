@@ -1,20 +1,32 @@
 ﻿@using Microsoft.Extensions.Options
 @using MyFamilyManager.Identity.API.Models
 @{
-    ViewData["Title"] = "MyFamilyManager.Identity.API Home";
-}
-@inject IOptions<StsConfig> OptionsStsConfig
-
-@if (User.Identity.IsAuthenticated)
-{
-    <h1>Hi @User.Identity.Name</h1>
-}
-else
-{
-    <br />
+    ViewData["Title"] = "MyFamilyManager IdentityServer";
 }
 
-<a href="@OptionsStsConfig.Value.ClientUrl">
-    ClientUrl
-</a>
+<div class="welcome-page">
+    <div class="row page-header">
+        <div class="col-sm-10">
+            <h1>
+                @*<img class="icon" src="~/icon.jpg">*@
+                Welcome to MyFamilyManager IdentityServer
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <p>
+                IdentityServer publishes a
+                <a href="~/.well-known/openid-configuration">discovery document</a>
+                where you can find metadata and links to all the endpoints, key material, etc.
+            </p>
+        </div>
+        @*<div class="col-sm-8">
+            <p>
+                Click <a href="~/grants">here</a> to manage your stored grants.
+            </p>
+        </div>*@
+    </div>
+</div>
 

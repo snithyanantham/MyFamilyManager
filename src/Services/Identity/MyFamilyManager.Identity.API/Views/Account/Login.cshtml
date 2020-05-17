@@ -3,7 +3,7 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 @{
-    ViewData["Title"] = "ACCOUNT_LOGIN";
+    ViewData["Title"] = "Login";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -13,35 +13,35 @@
             <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@Model.ReturnUrl" method="post" class="form-horizontal">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label">EMAIL")</label>
+                    <label class="col-md-4 control-label">EMAIL</label>
                     <div class="col-md-8">
                         <input asp-for="Email" class="form-control" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label">PASSWORD")</label>
+                    <label class="col-md-4 control-label">PASSWORD</label>
                     <div class="col-md-8">
                         <input asp-for="Password" class="form-control" type="password" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label">REMEMBER_ME")</label>
+                    <label class="col-md-4 control-label">REMEMBER_ME</label>
                     <div class="checkbox col-md-8">
                         <input asp-for="RememberLogin" class="big_checkbox"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-4 col-md-8">
-                        <button type="submit" class="btn btn-primary">ACCOUNT_LOGIN")</button>
+                        <button type="submit" class="btn btn-primary">ACCOUNT_LOGIN</button>
                     </div>
                 </div>
                 <p>
-                    <a asp-action="Register" asp-route-returnurl="@Model.ReturnUrl">REGISTER_AS_NEW_USER")</a>
+                    <a asp-action="Register" asp-route-returnurl="@Model.ReturnUrl">REGISTER_AS_NEW_USER</a>
                 </p>
                 <p>
-                    <a asp-action="ForgotPassword">FORGOT_YOUR_PASSWORD")</a>
+                    <a asp-action="ForgotPassword">FORGOT_YOUR_PASSWORD</a>
                 </p>
             </form>
         </section>
