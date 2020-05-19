@@ -17,8 +17,8 @@ jobs:
     - name: Build and Push
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:push -a appname myfamilymanager-web
+      run: heroku container:push -a myfamilymanager-web myfamilymanager-web
     - name: Release
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:release -a appname myfamilymanager-web
+      run: heroku container:release -a myfamilymanager-web myfamilymanager-web
