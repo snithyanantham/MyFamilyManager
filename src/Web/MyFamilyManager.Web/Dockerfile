@@ -16,7 +16,7 @@ RUN apt-get update -yq \
     && apt-get install nodejs -yq
 
 WORKDIR /src
-COPY ["Web/MyFamilyManager.Web/MyFamilyManager.Web.csproj", "Web/MyFamilyManager.Web/"]
+COPY ["MyFamilyManager.Web.csproj", "Web/MyFamilyManager.Web/"]
 RUN dotnet restore "Web/MyFamilyManager.Web/MyFamilyManager.Web.csproj"
 COPY . .
 WORKDIR "/src/Web/MyFamilyManager.Web"
