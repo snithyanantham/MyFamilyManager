@@ -1,0 +1,58 @@
+version: '3.4'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: myfamilymanager-db
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: myfamilymanager-phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - 7000:80
+
+  myfamilymanager-api:
+    image: ${REGISTRY:-myfamilymanager}/myfamilymanager.api:${PLATFORM:-linux}-${TAG:-dev}
+    container_name: myfamilymanager-api
+    build:
+      context: .
+      dockerfile: Services/Core/MyFamilyManager.API/Dockerfile
+    depends_on:
+      - mysql  
+    ports:
+      - 5100:80
+
+  myfamilymanager-identity-api:
+    image: ${REGISTRY:-myfamilymanager}/myfamilymanager.identity.api:${PLATFORM:-linux}-${TAG:-dev}
+    container_name: myfamilymanager-identity-api
+    build:
+      context: .
+      dockerfile: Services/Identity/MyFamilyManager.Identity.API/Dockerfile
+    depends_on:
+      - mysql  
+    ports:
+      - 5002:80
+
+  myfamilymanager-web:
+    image: ${REGISTRY:-myfamilymanager}/myfamilymanager.web:${PLATFORM:-linux}-${TAG:-dev}
+    container_name: myfamilymanager-web
+    build:
+      context: .
+      dockerfile: Web/MyFamilyManager.Web/Dockerfile
+    depends_on:
+      - mysql  
+    ports:
+      - 5080:80

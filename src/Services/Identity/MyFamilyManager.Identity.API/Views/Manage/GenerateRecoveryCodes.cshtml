@@ -1,0 +1,28 @@
+﻿
+
+@{
+    ViewData["Title"] = "GENERATE_2FA_RECOVERY_CODES";
+    ViewData.AddActivePage(ManageNavPages.TwoFactorAuthentication);
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-warning" role="alert">
+    <p>
+        <span class="fas fa-exclamation-triangle"></span>
+        <strong>GENERATE_2FA_RECOVERY_CODES_SAFE_PLACE")</strong>
+    </p>
+    <p>
+        GENERATE_2FA_RECOVERY_CODES_INFO_LOSE")
+    </p>
+    <p>
+        GENERATE_2FA_RECOVERY_CODES_TEXT")
+        <a asp-action="ResetAuthenticatorWarning">GENERATE_2FA_RECOVERY_CODES_TEXT_LINK")</a>
+    </p>
+</div>
+
+<div>
+    <form asp-action="GenerateRecoveryCodes" method="post" class="form-group">
+        <button class="btn btn-danger" type="submit">GENERATE_RECOVERY_CODES")</button>
+    </form>
+</div>

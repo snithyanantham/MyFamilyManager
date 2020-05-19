@@ -1,0 +1,20 @@
+﻿
+@model MyFamilyManager.Identity.API.Models.LoggedOutViewModel
+
+<div class="page-header">
+    <h1>
+        <small>LOGOUT_TEXT</small>
+    </h1>
+
+    @if (Model.PostLogoutRedirectUri != null)
+    {
+<div>
+    LOGOUT_RETURN_TO <a href="@Model.PostLogoutRedirectUri">@Model.ClientName</a>
+</div>
+    }
+
+    @if (Model.SignOutIframeUrl != null)
+    {
+        <iframe class="signout logoutiframe" src="@Model.SignOutIframeUrl"></iframe>
+    }
+</div>
