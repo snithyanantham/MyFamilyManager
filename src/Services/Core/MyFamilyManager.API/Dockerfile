@@ -8,7 +8,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 
 WORKDIR /src
 
-COPY "./src/*" "/"
+COPY "./src/*" .
 #COPY "./src/Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj", "/Services/Core/MyFamilyManager.API/"
 #COPY ["./src/Services/Core/MyFamilyManager.API.Repositories/MyFamilyManager.API.Repositories.csproj", "Services/Core/MyFamilyManager.API.Repositories/"]
 #COPY ["./src/Services/Core/MyFamilyManager.API.Core/MyFamilyManager.API.Core.csproj", "Services/Core/MyFamilyManager.API.Core/"]
