@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
 
-  registry.heroku.com/myfamilymanager-web/web:
+  myfamilymanager-web:
     image: registry.heroku.com/myfamilymanager-web/web
     container_name: registry.heroku.com/myfamilymanager-web/web
     build:
