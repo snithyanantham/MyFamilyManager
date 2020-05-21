@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: testls
+      run: docker images ls
     - name: test
       run: ls -lh /
     - name: Build #set the whatever name you want to this step
