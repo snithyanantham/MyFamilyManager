@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
-      run: docker-compose -f docker-compose.heroku.yml build
+      run: docker-compose -f ./src/docker-compose.heroku.yml build
    # - name: Build #set the whatever name you want to this step
    #   id: heroku
    #   run: docker build . --file src/Services/Core/MyFamilyManager.API/Dockerfile --tag registry.heroku.com/myfamilymanager-web/web
