@@ -12,8 +12,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: test
-      run: docker build .
-    - name: list folder
       run: ls -lh /
     - name: Build #set the whatever name you want to this step
       id: heroku
