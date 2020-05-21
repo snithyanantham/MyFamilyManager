@@ -14,7 +14,7 @@ jobs:
     - name: testls
       run: docker images ls
     - name: test
-      run: ls -lh /
+      run: ls -lR
     - name: Build #set the whatever name you want to this step
       id: heroku
       run: docker build . --file src/Services/Core/MyFamilyManager.API/Dockerfile --tag registry.heroku.com/myfamilymanager-web/web
