@@ -12,7 +12,8 @@ COPY "./src/*" "/"
 #COPY "./src/Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj", "/Services/Core/MyFamilyManager.API/"
 #COPY ["./src/Services/Core/MyFamilyManager.API.Repositories/MyFamilyManager.API.Repositories.csproj", "Services/Core/MyFamilyManager.API.Repositories/"]
 #COPY ["./src/Services/Core/MyFamilyManager.API.Core/MyFamilyManager.API.Core.csproj", "Services/Core/MyFamilyManager.API.Core/"]
-RUN dotnet restore "Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj"
+RUN ls -lR
+RUN dotnet restore "./src/Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Core/MyFamilyManager.API"
 RUN dotnet build "MyFamilyManager.API.csproj" -c Release -o /app/build
