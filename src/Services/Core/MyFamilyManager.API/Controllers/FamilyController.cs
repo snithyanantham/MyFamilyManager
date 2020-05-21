@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyFamilyManager.API.Controllers
 {
-    [Route("api/[controller]")]
+    
     [ApiController]
+    [Route("[controller]")]
     public class FamilyController : ControllerBase
     {
     }
