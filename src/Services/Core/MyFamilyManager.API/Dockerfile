@@ -9,8 +9,8 @@ WORKDIR /src
 
 COPY "MyFamilyManager.sln" "MyFamilyManager.sln"
 COPY "Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj", "Services/Core/MyFamilyManager.API/"
-COPY ["./Services/Core/MyFamilyManager.API.Repositories/MyFamilyManager.API.Repositories.csproj", "./Services/Core/MyFamilyManager.API.Repositories/"]
-COPY ["./Services/Core/MyFamilyManager.API.Core/MyFamilyManager.API.Core.csproj", "./Services/Core/MyFamilyManager.API.Core/"]
+COPY ["Services/Core/MyFamilyManager.API.Repositories/MyFamilyManager.API.Repositories.csproj", "Services/Core/MyFamilyManager.API.Repositories/"]
+COPY ["Services/Core/MyFamilyManager.API.Core/MyFamilyManager.API.Core.csproj", "Services/Core/MyFamilyManager.API.Core/"]
 RUN dotnet restore "Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Core/MyFamilyManager.API"
