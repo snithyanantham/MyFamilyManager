@@ -6,8 +6,6 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 
-RUN ls -lR
-
 WORKDIR /src
 
 COPY "src/MyFamilyManager.sln" src/"MyFamilyManager.sln"
