@@ -7,8 +7,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 
-COPY "./MyFamilyManager.sln" "MyFamilyManager.sln"
-COPY "Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj", "Services/Core/MyFamilyManager.API/"
+COPY "src/MyFamilyManager.sln" "MyFamilyManager.sln"
+COPY "src/Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj", "src/Services/Core/MyFamilyManager.API/"
 COPY ["Services/Core/MyFamilyManager.API.Repositories/MyFamilyManager.API.Repositories.csproj", "Services/Core/MyFamilyManager.API.Repositories/"]
 COPY ["Services/Core/MyFamilyManager.API.Core/MyFamilyManager.API.Core.csproj", "Services/Core/MyFamilyManager.API.Core/"]
 RUN dotnet restore "Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj"
