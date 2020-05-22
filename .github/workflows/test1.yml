@@ -13,6 +13,10 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       run: docker-compose -f ./src/docker-compose.heroku.yml build
+    - name: login
+      run: echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=${{ secrets.HEROKU_EMAIL }} registry.heroku.com --password-stdin
+    - name: TagImage
+      run: docker tag myfamilymanager-web registry.heroku.com/myfamilymanager-web/web
    # - name: Build #set the whatever name you want to this step
    #   id: heroku
    #   run: docker build . --file src/Services/Core/MyFamilyManager.API/Dockerfile --tag registry.heroku.com/myfamilymanager-web/web

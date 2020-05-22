@@ -3,8 +3,8 @@ version: '3.4'
 services:
 
   myfamilymanager-web:
-    image: registry.heroku.com/myfamilymanager-web/web
-    container_name: registry.heroku.com/myfamilymanager-web/web
+    image: myfamilymanager-web
+    container_name: myfamilymanager-web
     build:
       context: .
       dockerfile: Services/Core/MyFamilyManager.API/Dockerfile.heroku
