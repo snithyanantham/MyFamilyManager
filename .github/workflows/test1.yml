@@ -15,6 +15,13 @@ jobs:
       run: docker-compose -f ./src/docker-compose.heroku.yml build
     - name: login
       run: echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=${{ secrets.HEROKU_EMAIL }} registry.heroku.com --password-stdin
+    - name: create credentialfile
+      run: |
+      cat >~/.netrc <<EOF 
+        machine api.heroku.com
+        login ${{ secrets.HEROKU_EMAIL }}
+        password ${{ secrets.HEROKU_API_KEY }}
+        EOF
     - name: TagImage
       run: docker tag myfamilymanager-web registry.heroku.com/myfamilymanager-web/web
    # - name: Build #set the whatever name you want to this step
