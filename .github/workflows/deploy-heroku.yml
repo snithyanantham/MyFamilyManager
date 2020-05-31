@@ -1,8 +1,8 @@
-name: 'Test2' #set whatevername you want to your github job
+name: 'Deploy-Heroku' #set whatevername you want to your github job
 on: 
   push:
     branches: 
-      - release 
+      - 'releases/**' 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,4 +16,4 @@ jobs:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           docker_compose_file: './src/docker-compose.heroku.yml' # set the path to the folder where the docker-compose file is located
-          heroku_apps: '[{"imagename":"myfamilymanager-web","appname":"myfamilymanager-web","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
+          heroku_apps: '[{"imagename":"myfamilymanager-web","appname":"myfamilymanager-web","apptype":"web"},{"imagename":"myfamilymanager-api","appname":"myfamilymanager-api","apptype":"web"},{"imagename":"myfamilymanager-identity","appname":"myfamilymanager-identity","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type

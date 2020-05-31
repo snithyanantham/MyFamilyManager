@@ -2,9 +2,23 @@ version: '3.4'
 
 services:
 
+  myfamilymanager-api:
+    image: myfamilymanager-api
+    container_name: myfamilymanager-api
+    build:
+      context: .
+      dockerfile: Services/Core/MyFamilyManager.API/Dockerfile.heroku
+  
+  myfamilymanager-identity:
+    image: myfamilymanager-identity
+    container_name: myfamilymanager-identity
+    build:
+      context: .
+      dockerfile: Services/Identity/MyFamilyManager.Identity.API/Dockerfile.heroku
+
   myfamilymanager-web:
     image: myfamilymanager-web
     container_name: myfamilymanager-web
     build:
       context: .
-      dockerfile: Services/Core/MyFamilyManager.API/Dockerfile.heroku
+      dockerfile: Web/MyFamilyManager.Web/Dockerfile.heroku
