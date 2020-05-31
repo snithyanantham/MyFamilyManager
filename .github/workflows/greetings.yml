@@ -2,7 +2,7 @@ name: 'Test2' #set whatevername you want to your github job
 on: 
   push:
     branches: 
-      - dev 
+      - release 
 jobs:
   build:
     runs-on: ubuntu-latest
