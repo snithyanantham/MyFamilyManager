@@ -4,10 +4,11 @@ using System.Text;
 
 namespace MyFamilyManager.API.Core.Models
 {
-    public class Family
+    public class SubCategory
     {
-        public int FamilyId { get; set; }
+        public int SubCategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int CategoryId { get; set; }
     }
 }
