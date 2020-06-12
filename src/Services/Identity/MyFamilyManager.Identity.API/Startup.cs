@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MyFamilyManager.Identity.API.Data;
 using MyFamilyManager.Identity.API.Models;
 using MyFamilyManager.Identity.API.Services;
@@ -34,6 +35,17 @@ namespace MyFamilyManager.Identity.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigins",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44303/")
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .AllowAnyHeader();
+                    });
+            });
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -53,7 +65,7 @@ namespace MyFamilyManager.Identity.API
             var builder = services.AddIdentityServer()
                //.AddInMemoryIdentityResources(Config.Ids)
                //.AddInMemoryApiResources(Config.Apis)
-               //.AddInMemoryClients(Config.Clients);
+               //.AddInMemoryClients(Config.Clients)
                .AddConfigurationStore(options =>
                {
                    options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
@@ -86,7 +98,7 @@ namespace MyFamilyManager.Identity.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                InitializeDatabase(app);
+                // InitializeDatabase(app);
             }
             else
             {
@@ -95,6 +107,7 @@ namespace MyFamilyManager.Identity.API
                 app.UseHsts();
             }
 
+            app.UseCors("AllowOrigins");
             app.UseIdentityServer();
 
             app.UseStaticFiles();

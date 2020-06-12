@@ -30,6 +30,23 @@
     </Shell.Resources>
 
     <!-- Your Pages -->
+    <!--<Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+    <FlyoutItem Title="Cats"
+                Icon="cat.png">
+        <Tab>
+            <ShellContent>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Dogs"
+                Icon="dog.png">
+        <Tab>
+            <ShellContent>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>-->
     <TabBar>
         <Tab Title="Browse" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
@@ -39,21 +56,5 @@
         </Tab>
     </TabBar>
 
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid BackgroundColor="Black"
-              HeightRequest="200">
-                <Image Aspect="AspectFill"
-                   Source="xamarin_logo.png"
-                   Opacity="0.6" />
-                <Label Text="Animals"
-                   TextColor="White"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-    
 
 </Shell>

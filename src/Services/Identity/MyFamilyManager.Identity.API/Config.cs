@@ -16,7 +16,7 @@ namespace MyFamilyManager.Identity.API
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
-                new ApiResource("Api1", "My API")
+                new ApiResource("api1", "My API")
             };
 
         public static IEnumerable<Client> Clients =>
@@ -75,6 +75,33 @@ namespace MyFamilyManager.Identity.API
                     AllowedCorsOrigins = { "http://localhost:5002" },
 
                     AllowedScopes = { "openid", "profile", "api1" }
+                },
+                new Client
+                {
+                    ClientName = "ReactApp",
+                    ClientId = "reactclient",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RedirectUris = new List<string>()
+                    {
+                        "https://localhost:44303/callback"
+                    },
+                    PostLogoutRedirectUris = new List<string>()
+                    {
+                        "https://localhost:44303/"
+                    },
+                    AllowedScopes =
+                    {
+                        "openid", "profile", "api1"
+                    },
+                    ClientSecrets =
+                    {
+                        new Secret("reactclient".Sha256())
+                    },
+                    AllowedCorsOrigins = new List<string>
+                    {
+                        "https://localhost:44303/"
+                    },
+                    AllowAccessTokensViaBrowser = true
                 }
             };
     }
