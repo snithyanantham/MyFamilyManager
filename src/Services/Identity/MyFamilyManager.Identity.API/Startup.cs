@@ -40,7 +40,7 @@ namespace MyFamilyManager.Identity.API
                 options.AddPolicy("AllowOrigins",
                     builder =>
                     {
-                        builder.WithOrigins("https://localhost:44303/")
+                        builder.WithOrigins("https://localhost:44303")
                         .AllowAnyMethod()
                         .AllowCredentials()
                         .AllowAnyHeader();
@@ -63,20 +63,20 @@ namespace MyFamilyManager.Identity.API
                 .AddDefaultTokenProviders();
 
             var builder = services.AddIdentityServer()
-               //.AddInMemoryIdentityResources(Config.Ids)
-               //.AddInMemoryApiResources(Config.Apis)
-               //.AddInMemoryClients(Config.Clients)
-               .AddConfigurationStore(options =>
-               {
-                   options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                       mysql => mysql.MigrationsAssembly(migrationsAssembly));
-               })
-               .AddOperationalStore(options =>
-               {
-                   options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                       mysql => mysql.MigrationsAssembly(migrationsAssembly));
-                   options.EnableTokenCleanup = true;
-               })
+               .AddInMemoryIdentityResources(Config.Ids)
+               .AddInMemoryApiResources(Config.Apis)
+               .AddInMemoryClients(Config.Clients)
+               //.AddConfigurationStore(options =>
+               //{
+               //    options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+               //        mysql => mysql.MigrationsAssembly(migrationsAssembly));
+               //})
+               //.AddOperationalStore(options =>
+               //{
+               //    options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+               //        mysql => mysql.MigrationsAssembly(migrationsAssembly));
+               //    options.EnableTokenCleanup = true;
+               //})
                .AddAspNetIdentity<ApplicationUser>();
 
             builder.AddDeveloperSigningCredential();

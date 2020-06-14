@@ -25,10 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\CallbackPage.tsx" />
     <None Remove="ClientApp\src\utils\userManager.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\components\CallbackPage.tsx" />
     <TypeScriptCompile Include="ClientApp\src\utils\userManager.ts" />
   </ItemGroup>
 

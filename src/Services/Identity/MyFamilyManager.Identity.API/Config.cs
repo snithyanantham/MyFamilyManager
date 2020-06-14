@@ -81,28 +81,15 @@ namespace MyFamilyManager.Identity.API
                     ClientName = "ReactApp",
                     ClientId = "reactclient",
                     AllowedGrantTypes = GrantTypes.Implicit,
-                    RedirectUris = new List<string>()
-                    {
-                        "https://localhost:44303/callback"
-                    },
-                    PostLogoutRedirectUris = new List<string>()
-                    {
-                        "https://localhost:44303/"
-                    },
-                    AllowedScopes =
-                    {
-                        "openid", "profile", "api1"
-                    },
-                    ClientSecrets =
-                    {
-                        new Secret("reactclient".Sha256())
-                    },
+                    RedirectUris ={"https://localhost:44303/callback"},
+                    PostLogoutRedirectUris = {"https://localhost:44303"},
+                    AllowedScopes ={  "openid", "profile", "api1" },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44303/"
+                        "https://localhost:44303"
                     },
-                    AllowAccessTokensViaBrowser = true
-                }
+                    AllowAccessTokensViaBrowser = true,
+                        }
             };
     }
 }

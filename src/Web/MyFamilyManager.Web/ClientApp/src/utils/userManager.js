@@ -1,7 +1,8 @@
-﻿import { createUserManager } from 'redux-oidc';
-
-const userManagerConfig = {
-    client_id:'reactclient',
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var redux_oidc_1 = require("redux-oidc");
+var userManagerConfig = {
+    client_id: 'reactclient',
     redirect_uri: 'https://localhost:44303/callback',
     post_logout_redirect_uri: 'https://localhost:44303',
     response_type: 'id_token token',
@@ -13,7 +14,6 @@ const userManagerConfig = {
     loadUserInfo: true,
     monitorSession: true
 };
-
-const userManager = createUserManager(userManagerConfig);
-
-export default userManager;
+var userManager = redux_oidc_1.createUserManager(userManagerConfig);
+exports.default = userManager;
+//# sourceMappingURL=userManager.js.map
