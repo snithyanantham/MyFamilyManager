@@ -5,6 +5,7 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
        xmlns:local="clr-namespace:MyFamilyManager.Mobile.Views"
+       xmlns:controls="clr-namespace:MyFamilyManager.Mobile.Controls"
        Title="MyFamilyManager.Mobile"
        x:Class="MyFamilyManager.Mobile.AppShell">
 
@@ -30,31 +31,26 @@
     </Shell.Resources>
 
     <!-- Your Pages -->
-    <!--<Shell.FlyoutHeader>
+    <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
     </Shell.FlyoutHeader>
-    <FlyoutItem Title="Cats"
-                Icon="cat.png">
-        <Tab>
-            <ShellContent>
-            </ShellContent>
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Dogs"
-                Icon="dog.png">
-        <Tab>
-            <ShellContent>
-            </ShellContent>
-        </Tab>
-    </FlyoutItem>-->
-    <TabBar>
+    <FlyoutItem Title="Manage Expenses">
         <Tab Title="Browse" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
         <Tab Title="About" Icon="tab_about.png">
             <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
         </Tab>
-    </TabBar>
+    </FlyoutItem>
+    <FlyoutItem Title="Manage Remainders">
+        <Tab Title="Browse Remainder" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </FlyoutItem>
+    
 
 
 </Shell>
