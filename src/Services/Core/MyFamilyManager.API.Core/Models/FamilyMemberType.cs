@@ -4,9 +4,8 @@ using System.Text;
 
 namespace MyFamilyManager.API.Core.Models
 {
-    public class FamilyMemberType
+    public class FamilyMemberType : BaseEntity
     {
-        public int FamilyMemberTypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

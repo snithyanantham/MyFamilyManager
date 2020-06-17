@@ -2,14 +2,16 @@
 
 namespace MyFamilyManager.API.Core.Models
 {
-    public class Transaction
+    public class Transaction : BaseEntity
     {
-        public int TransationId { get; set; }
-        public int CategoryId { get; set; }
-        public int SubCategoryId { get; set; }
-        public int FamilyId { get; set; }
+        public Guid CategoryId { get; set; }
+        public Guid SubCategoryId { get; set; }
+        public Guid FamilyId { get; set; }
         public string UserId { get; set; }
         public double Amount { get; set; }
-        public DateTime CreatedOn { get; set; }
+
+        public virtual Category Category { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
+        public virtual Family Family { get; set; }
     }
 }

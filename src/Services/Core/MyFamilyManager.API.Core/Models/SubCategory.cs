@@ -4,11 +4,11 @@ using System.Text;
 
 namespace MyFamilyManager.API.Core.Models
 {
-    public class SubCategory
+    public class SubCategory : BaseEntity
     {
-        public int SubCategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

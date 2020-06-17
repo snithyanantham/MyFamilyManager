@@ -4,9 +4,9 @@ using System.Text;
 
 namespace MyFamilyManager.API.Core.Models
 {
-    public class Category : BaseEntity
+    public class BaseEntity
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public Guid Id { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

@@ -21,35 +21,41 @@ namespace MyFamilyManager.API.Repositories
         {
             builder.Entity<Family>(e =>
             {
-                e.ToTable("Families").HasKey(k => k.FamilyId);
-                e.Property(p => p.FamilyId).ValueGeneratedOnAdd();
+                e.ToTable("Families").HasKey(k => k.Id);
+                e.Property(p => p.Id).ValueGeneratedOnAdd();
                 e.HasIndex(i => i.Name).IsUnique();
+                e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
             });
             builder.Entity<FamilyMember>(e =>
             {
-                e.ToTable("FamilyMembers").HasKey(k => k.FamilyMemberId);
-                e.Property(p => p.FamilyMemberId).ValueGeneratedOnAdd();
+                e.ToTable("FamilyMembers").HasKey(k => k.Id);
+                e.Property(p => p.Id).ValueGeneratedOnAdd();
+                e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
+                
             });
             builder.Entity<FamilyMemberType>(e =>
             {
-                e.ToTable("FamilyMemberTypes").HasKey(k => k.FamilyMemberTypeId);
-                e.Property(p => p.FamilyMemberTypeId).ValueGeneratedOnAdd();
+                e.ToTable("FamilyMemberTypes").HasKey(k => k.Id);
+                e.Property(p => p.Id).ValueGeneratedOnAdd();
+                e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
             });
             builder.Entity<Category>(e =>
             {
-                e.ToTable("Categories").HasKey(k => k.CategoryId);
-                e.Property(p => p.CategoryId).ValueGeneratedOnAdd();
+                e.ToTable("Categories").HasKey(k => k.Id);
+                e.Property(p => p.Id).ValueGeneratedOnAdd();
+                e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
             });
             builder.Entity<SubCategory>(e =>
             {
-                e.ToTable("SubCategories").HasKey(k => k.SubCategoryId);
-                e.Property(p => p.SubCategoryId).ValueGeneratedOnAdd();
+                e.ToTable("SubCategories").HasKey(k => k.Id);
+                e.Property(p => p.Id).ValueGeneratedOnAdd();
+                e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
             });
             builder.Entity<Transaction>(e =>
             {
-                e.ToTable("Transations").HasKey(k => k.TransationId);
-                e.Property(p => p.TransationId).ValueGeneratedOnAdd();
-                e.Property(p => p.CreatedOn).ValueGeneratedOnAdd();
+                e.ToTable("Transations").HasKey(k => k.Id);
+                e.Property(p => p.Id).ValueGeneratedOnAdd();
+                e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
             });
             base.OnModelCreating(builder);
         }
