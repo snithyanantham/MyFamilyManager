@@ -16,6 +16,11 @@ namespace MyFamilyManager.API.Repositories
         private IBaseRepository<SubCategory> _subCategoryRepository;
         private IBaseRepository<Transaction> _transactionRepository;
 
+        public UnitOfWork(MyFamilyManagerDbContext myFamilyManagerDbContext)
+        {
+            _myFamilyManagerDbContext = myFamilyManagerDbContext;
+        }
+
         public IBaseRepository<FamilyMember> FamilyMemberRepository
         {
             get { return _familyMemberRepository = _familyMemberRepository ?? new BaseRepository<FamilyMember>(_myFamilyManagerDbContext); }

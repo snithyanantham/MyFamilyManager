@@ -32,7 +32,6 @@ namespace myfamilymanager.api.host.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
-            var response = _familRepo.Save(new Family { Name = "FirstFamily", Description = "FamilyDescription" });
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

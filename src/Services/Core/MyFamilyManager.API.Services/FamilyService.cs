@@ -1,4 +1,5 @@
-﻿using MyFamilyManager.API.Core.Interfaces;
+﻿using MyFamilyManager.API.Core.Dtos;
+using MyFamilyManager.API.Core.Interfaces;
 using MyFamilyManager.API.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,15 @@ namespace MyFamilyManager.API.Services
             return _unitOfWork.FamilyRepository.GetById(Id);
         }
 
-        public void SaveFamily(Family family)
+        public void SaveFamily(FamilyDto family)
         {
-            _unitOfWork.FamilyRepository.Insert(family);
+            Family familyEntity = new Family
+            {
+                Name = family.Name,
+                Description = family.Description
+            };
+            _unitOfWork.FamilyRepository.Insert(familyEntity);
+            _unitOfWork.Commit();
         }
     }
 }

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyFamilyManager.API.Core.Interfaces;
 using MyFamilyManager.API.Repositories;
+using MyFamilyManager.API.Services;
 
 namespace myfamilymanager.api.host
 {
@@ -46,8 +47,13 @@ namespace myfamilymanager.api.host
                     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My Family Manager", Version = "v1" });
                 });
 
-            services.AddScoped<IFamilyRepository, FamilyRepository>();
             services.AddDbContext<MyFamilyManagerDbContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddScoped<IFamilyRepository, FamilyRepository>();
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IFamilyService, FamilyService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+            services.AddScoped<MyFamilyManagerDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
