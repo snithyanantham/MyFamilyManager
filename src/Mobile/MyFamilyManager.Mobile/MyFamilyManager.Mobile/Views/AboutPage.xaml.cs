@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFamilyManager.Mobile.ViewModels;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,9 +11,11 @@ namespace MyFamilyManager.Mobile.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
+        private readonly AboutViewModel _viewModel;
         public AboutPage()
         {
             InitializeComponent();
+            BindingContext = this._viewModel = new AboutViewModel();
         }
     }
 }

@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using MyFamilyManager.Mobile.Models;
 using MyFamilyManager.Mobile.Views;
+using MyFamilyManager.Mobile.Infrastructure;
 
 namespace MyFamilyManager.Mobile.ViewModels
 {

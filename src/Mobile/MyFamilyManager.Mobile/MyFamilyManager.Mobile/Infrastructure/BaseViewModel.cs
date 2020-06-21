@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using MyFamilyManager.Mobile.Models;
 using MyFamilyManager.Mobile.Services;
 
-namespace MyFamilyManager.Mobile.ViewModels
+namespace MyFamilyManager.Mobile.Infrastructure
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using MyFamilyManager.Mobile.Infrastructure;
 using MyFamilyManager.Mobile.Models;
 
 namespace MyFamilyManager.Mobile.ViewModels

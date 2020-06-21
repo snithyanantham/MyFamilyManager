@@ -18,13 +18,13 @@ namespace MyFamilyManager.Mobile.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        private readonly ItemsViewModel _viewModel;
 
         public ItemsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new ItemsViewModel();
         }
 
         async void OnItemSelected(object sender, EventArgs args)
@@ -43,8 +43,8 @@ namespace MyFamilyManager.Mobile.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.IsBusy = true;
+            if (_viewModel.Items.Count == 0)
+                _viewModel.IsBusy = true;
         }
     }
 }

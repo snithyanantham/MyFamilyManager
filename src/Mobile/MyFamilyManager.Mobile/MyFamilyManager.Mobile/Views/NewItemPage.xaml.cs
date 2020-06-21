@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using MyFamilyManager.Mobile.Models;
+using MyFamilyManager.Mobile.ViewModels;
 
 namespace MyFamilyManager.Mobile.Views
 {
@@ -13,24 +14,18 @@ namespace MyFamilyManager.Mobile.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
-
+        private readonly NewItemViewModel _viewModel;
+        
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
-            {
-                Text = "Item name",
-                Description = "This is an item description."
-            };
-
-            BindingContext = this;
+            BindingContext = this._viewModel = new NewItemViewModel();
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
+            MessagingCenter.Send(this, "AddItem", _viewModel.Item);
             await Navigation.PopModalAsync();
         }
 

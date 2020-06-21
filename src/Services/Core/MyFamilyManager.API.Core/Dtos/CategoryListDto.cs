@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MyFamilyManager.API.Core.Dtos
 {
-    public class IdNameDescriptionListDto
+    public class CategoryListDto
     {
-        public List<IdNameDescriptionDto> IdNameDescriptions { get; set; }
+        public List<CategoryDto> categories { get; set; }
     }
 }

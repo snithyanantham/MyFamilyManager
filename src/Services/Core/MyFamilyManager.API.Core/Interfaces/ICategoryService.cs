@@ -7,6 +7,6 @@ namespace MyFamilyManager.API.Core.Interfaces
 {
     public interface ICategoryService
     {
-        IdNameDescriptionListDto GetAllCategories();
+        CategoryListDto GetAllCategories();
     }
 }

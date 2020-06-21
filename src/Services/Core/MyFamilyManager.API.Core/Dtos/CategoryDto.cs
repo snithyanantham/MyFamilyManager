@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyFamilyManager.API.Core.Dtos
 {
-    public class IdNameDescriptionDto
+    public class CategoryDto
     {
         public Guid Id { get; set; }
         [Required]

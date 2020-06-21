@@ -8,9 +8,33 @@ namespace MyFamilyManager.API.Services
 {
     public class CategoryService : ICategoryService
     {
-        public IdNameDescriptionListDto GetAllCategories()
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryService(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
+        }
+        public CategoryListDto GetAllCategories()
+        {
+            var categories = _unitOfWork.CategoryRepository.GetAll();
+            CategoryListDto categoryList = new CategoryListDto
+            {
+                categories = new List<CategoryDto>()
+            };
+
+            if (categories != null)
+            {
+                foreach (var item in categories)
+                {
+                    categoryList.categories.Add(new CategoryDto
+                    {
+                        Id = item.Id,
+                        Name = item.Name,
+                        Description = item.Description
+                    });
+                }
+            }
+
+            return categoryList;
         }
     }
 }
