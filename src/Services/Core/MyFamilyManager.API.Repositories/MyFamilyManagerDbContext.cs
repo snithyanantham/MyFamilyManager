@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyFamilyManager.API.Core.Models;
+using System;
 
 namespace MyFamilyManager.API.Repositories
 {
@@ -31,7 +32,7 @@ namespace MyFamilyManager.API.Repositories
                 e.ToTable("FamilyMembers").HasKey(k => k.Id);
                 e.Property(p => p.Id).ValueGeneratedOnAdd();
                 e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
-                
+
             });
             builder.Entity<FamilyMemberType>(e =>
             {
@@ -44,12 +45,21 @@ namespace MyFamilyManager.API.Repositories
                 e.ToTable("Categories").HasKey(k => k.Id);
                 e.Property(p => p.Id).ValueGeneratedOnAdd();
                 e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
+                e.HasData(
+                     new Category { Id = new Guid("baf5cfac-b37e-11ea-b3de-0242ac130004"), Name = "Income", Description = "Income" },
+                     new Category { Id = new Guid("baf5dfac-b37e-11ea-b3de-0242ac130004"), Name = "Expenses", Description = "Expenses" }
+                    );
             });
             builder.Entity<SubCategory>(e =>
             {
                 e.ToTable("SubCategories").HasKey(k => k.Id);
                 e.Property(p => p.Id).ValueGeneratedOnAdd();
                 e.Property(p => p.CreatedAt).ValueGeneratedOnAdd();
+                e.HasData(
+                     new SubCategory { Id = new Guid("baf5d1e6-b37e-11ea-b3de-0242ac130004"), CategoryId = new Guid("baf5cfac-b37e-11ea-b3de-0242ac130004"), Name = "Salary", Description = "Salary" },
+                     new SubCategory { Id = new Guid("baf5d2e6-b37e-11ea-b3de-0242ac130004"), CategoryId = new Guid("baf5dfac-b37e-11ea-b3de-0242ac130004"), Name = "Rent", Description = "Rent" },
+                     new SubCategory { Id = new Guid("baf5d3e6-b37e-11ea-b3de-0242ac130004"), CategoryId = new Guid("baf5dfac-b37e-11ea-b3de-0242ac130004"), Name = "Others", Description = "Others" }
+                    );
             });
             builder.Entity<Transaction>(e =>
             {

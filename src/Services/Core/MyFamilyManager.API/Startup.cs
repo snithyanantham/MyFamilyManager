@@ -52,6 +52,7 @@ namespace myfamilymanager.api.host
             services.AddScoped<IFamilyRepository, FamilyRepository>();
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IFamilyService, FamilyService>();
+            services.AddScoped<ITransactionService, TransactionService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>(); 
             services.AddScoped<MyFamilyManagerDbContext>();
         }

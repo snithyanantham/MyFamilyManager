@@ -7,35 +7,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyFamilyManager.API.Core.Dtos;
 using MyFamilyManager.API.Core.Interfaces;
-using MyFamilyManager.API.Core.Models;
 
 namespace MyFamilyManager.API.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
-    public class FamilyController : ControllerBase
+    public class TransactionController : ControllerBase
     {
-        private readonly IFamilyService _familyService;
-        public FamilyController(IFamilyService familyService)
+        private readonly ITransactionService _transactionService;
+        public TransactionController(ITransactionService transactionService)
         {
-            _familyService = familyService;
-        }
-
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<FamilyDto> Get(Guid Id)
-        {
-            var family = _familyService.GetFamily(Id);
-            if (family != null)
-            {
-                return family;
-            }
-            else
-            {
-                return NoContent();
-            }
+            _transactionService = transactionService;
         }
 
         [HttpPost]
@@ -43,7 +25,7 @@ namespace MyFamilyManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Post(FamilyDto family)
+        public IActionResult Post(TransactionDto transaction)
         {
             try
             {
@@ -52,13 +34,25 @@ namespace MyFamilyManager.API.Controllers
                     return BadRequest();
                 }
 
-                _familyService.SaveFamily(family);
+                _transactionService.SaveTransaction(transaction);
                 return StatusCode(201);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(500);
             }
+        }
+
+        [HttpGet]
+        public ActionResult<TransactionListDto> Get()
+        {
+           return  _transactionService.GetTransactions();
+        }
+
+        [HttpGet("{Id}")]
+        public ActionResult<TransactionDto> Get(Guid Id)
+        {
+           return _transactionService.GetTransaction(Id);
         }
     }
 }

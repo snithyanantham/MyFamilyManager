@@ -6,7 +6,7 @@ namespace MyFamilyManager.API.Core.Interfaces
 {
     public interface IFamilyService
     {
-        Family GetFamily(Guid Id);
+        FamilyDto GetFamily(Guid Id);
         void SaveFamily(FamilyDto family);
     }
 }

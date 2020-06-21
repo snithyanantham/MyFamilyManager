@@ -9,15 +9,28 @@ namespace MyFamilyManager.API.Services
 {
     public class FamilyService : IFamilyService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         public FamilyService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public Family GetFamily(Guid Id)
+        public FamilyDto GetFamily(Guid Id)
         {
-            return _unitOfWork.FamilyRepository.GetById(Id);
+            var family = _unitOfWork.FamilyRepository.GetById(Id);
+            if (family != null)
+            {
+                return new FamilyDto
+                {
+                    Id = family.Id,
+                    Name = family.Name,
+                    Description = family.Description
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void SaveFamily(FamilyDto family)
