@@ -10,7 +10,7 @@ namespace MyFamilyManager.API.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        private DbSet<T> entities;
+        protected readonly DbSet<T> entities;
         protected readonly MyFamilyManagerDbContext dbContext;
         public BaseRepository(MyFamilyManagerDbContext context)
         {

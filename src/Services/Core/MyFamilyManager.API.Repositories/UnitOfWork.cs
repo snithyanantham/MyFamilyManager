@@ -13,7 +13,7 @@ namespace MyFamilyManager.API.Repositories
         private IBaseRepository<Family> _familyRepository;
         private IBaseRepository<FamilyMemberType> _familyMemberTypeRepository;
         private IBaseRepository<Category> _categoryRepository;
-        private IBaseRepository<SubCategory> _subCategoryRepository;
+        private ISubCategoryRepository _subCategoryRepository;
         private IBaseRepository<Transaction> _transactionRepository;
 
         public UnitOfWork(MyFamilyManagerDbContext myFamilyManagerDbContext)
@@ -41,9 +41,9 @@ namespace MyFamilyManager.API.Repositories
             get { return _categoryRepository = _categoryRepository ?? new BaseRepository<Category>(_myFamilyManagerDbContext); }
         }
 
-        public IBaseRepository<SubCategory> SubCategoryRepository
+        public ISubCategoryRepository SubCategoryRepository
         {
-            get { return _subCategoryRepository = _subCategoryRepository ?? new BaseRepository<SubCategory>(_myFamilyManagerDbContext); }
+            get { return _subCategoryRepository = _subCategoryRepository ?? new SubCategoryRepository(_myFamilyManagerDbContext); }
         }
 
         public IBaseRepository<Transaction> TransactionRepository

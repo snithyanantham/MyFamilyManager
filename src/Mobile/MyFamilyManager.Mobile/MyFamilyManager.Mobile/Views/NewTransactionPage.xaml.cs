@@ -29,7 +29,7 @@ namespace MyFamilyManager.Mobile.Views
             base.OnAppearing();
             var categories = _dataStore.GetCategories().GetAwaiter().GetResult();
             List<Category> categoryList = new List<Category>();
-            foreach (var item in categories)
+            foreach (var item in categories.categories)
             {
                 categoryList.Add(item);
             }

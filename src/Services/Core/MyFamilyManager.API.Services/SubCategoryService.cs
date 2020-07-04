@@ -30,7 +30,30 @@ namespace MyFamilyManager.API.Services
                     subCategoryList.SubCaetgories.Add(new SubCategoryDto
                     {
                         Id = item.Id,
-                        CategoryId = item.CategoryId,
+                        Name = item.Name,
+                        Description = item.Description
+                    });
+                }
+            }
+
+            return subCategoryList;
+        }
+
+        public SubCategoryListDto GetAllSubCategoriesByCategoryId(Guid categoryId)
+        {
+            var subCategories = _unitOfWork.SubCategoryRepository.GetAllByCategoryId(categoryId);
+            SubCategoryListDto subCategoryList = new SubCategoryListDto
+            {
+                SubCaetgories = new List<SubCategoryDto>()
+            };
+
+            if (subCategories != null)
+            {
+                foreach (var item in subCategories)
+                {
+                    subCategoryList.SubCaetgories.Add(new SubCategoryDto
+                    {
+                        Id = item.Id,
                         Name = item.Name,
                         Description = item.Description
                     });

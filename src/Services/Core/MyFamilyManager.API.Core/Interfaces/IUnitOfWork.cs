@@ -11,7 +11,7 @@ namespace MyFamilyManager.API.Core.Interfaces
         IBaseRepository<Family> FamilyRepository { get; }
         IBaseRepository<FamilyMemberType> FamilyMemberTypeRepository { get; }
         IBaseRepository<Category> CategoryRepository { get; }
-        IBaseRepository<SubCategory> SubCategoryRepository { get; }
+        ISubCategoryRepository SubCategoryRepository { get; }
         IBaseRepository<Transaction> TransactionRepository { get; }
         void Commit();
         void Rollback();

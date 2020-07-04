@@ -8,5 +8,6 @@ namespace MyFamilyManager.API.Core.Interfaces
     public interface ISubCategoryService
     {
         SubCategoryListDto GetAllSubCategories();
+        SubCategoryListDto GetAllSubCategoriesByCategoryId(Guid categoryId);
     }
 }

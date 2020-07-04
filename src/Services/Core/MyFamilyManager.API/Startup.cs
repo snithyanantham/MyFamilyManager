@@ -50,6 +50,7 @@ namespace myfamilymanager.api.host
             services.AddDbContext<MyFamilyManagerDbContext>(o => o.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddScoped<IFamilyRepository, FamilyRepository>();
+            services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IFamilyService, FamilyService>();
             services.AddScoped<ITransactionService, TransactionService>();

@@ -16,11 +16,11 @@ namespace MyFamilyManager.Mobile.Services
         {
             httpClient = new HttpClient();
         }
-        public async Task<List<Category>> GetCategories()
+        public async Task<CategoryList> GetCategories()
         {
-            var response = await httpClient.GetAsync("https://localhost:5001/Category");
-            var content = await response.Content.ReadAsStringAsync();
-            var categories = JsonConvert.DeserializeObject<List<Category>>(content);
+            var response = await httpClient.GetAsync("http://10.0.2.2:5000/Category").ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var categories = JsonConvert.DeserializeObject<CategoryList>(content);
             return categories;
         }
     }
