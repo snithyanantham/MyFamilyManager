@@ -36,7 +36,7 @@ namespace MyFamilyManager.Mobile.Views
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewTransactionPage()));
         }
 
         protected override void OnAppearing()

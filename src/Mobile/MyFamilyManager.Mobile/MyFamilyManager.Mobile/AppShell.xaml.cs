@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFamilyManager.Mobile.Views;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -10,6 +11,9 @@ namespace MyFamilyManager.Mobile
         public AppShell()
         {
             InitializeComponent();
+
+            Routing.RegisterRoute("itemdetailpage", typeof(ItemDetailPage));
+            Routing.RegisterRoute("itemspage", typeof(ItemsPage));
         }
     }
 }

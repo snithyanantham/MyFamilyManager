@@ -6,12 +6,11 @@
              mc:Ignorable="d"
              x:Class="MyFamilyManager.Mobile.Controls.FlyoutHeader"
              HeightRequest="200">
-    <Grid BackgroundColor="Black">
+    <Grid BackgroundColor="AliceBlue">
         <Image Aspect="AspectFill" 
-               Source="tab_feed.png" 
                Opacity="0.6" />
-        <Label Text="Animals" 
-               TextColor="White" 
+        <Label Text="MyFamilyManager" 
+               TextColor="Black" 
                FontAttributes="Bold" 
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center" />

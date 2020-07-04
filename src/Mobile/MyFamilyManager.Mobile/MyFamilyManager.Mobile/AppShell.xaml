@@ -38,9 +38,6 @@
         <Tab Title="Browse" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
-        <Tab Title="About" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
-        </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Manage Remainders">
         <Tab Title="Browse Remainder" Icon="tab_feed.png">
@@ -50,6 +47,8 @@
             <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
         </Tab>
     </FlyoutItem>
+    <MenuItem Text="About" IconImageSource="tab_about.png">
+    </MenuItem>
     
 
 

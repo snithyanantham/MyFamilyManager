@@ -81,12 +81,12 @@ namespace MyFamilyManager.Identity.API
 
             builder.AddDeveloperSigningCredential();
 
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = $"/Account/Login";
-                options.LogoutPath = $"/Account/Logout";
-                options.AccessDeniedPath = $"/Account/AccessDenied";
-            });
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.LoginPath = $"/Account/Login";
+            //    options.LogoutPath = $"/Account/Logout";
+            //    options.AccessDeniedPath = $"/Account/AccessDenied";
+            //});
 
             services.AddControllersWithViews();
 
@@ -107,21 +107,17 @@ namespace MyFamilyManager.Identity.API
                 app.UseHsts();
             }
 
-            app.UseCors("AllowOrigins");
+            app.UseStaticFiles();
+            app.UseRouting();
             app.UseIdentityServer();
 
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthentication();
+            app.UseCors("AllowOrigins");
+            // app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
             });
         }
 
