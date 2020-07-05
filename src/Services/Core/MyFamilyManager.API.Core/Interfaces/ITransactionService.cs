@@ -7,7 +7,7 @@ namespace MyFamilyManager.API.Core.Interfaces
 {
     public interface ITransactionService
     {
-        TransactionDto GetTransaction(Guid Id);
+        TransactionResponseDto GetTransaction(Guid Id);
         TransactionListDto GetTransactions();
         void SaveTransaction(TransactionDto transaction);
     }

@@ -11,10 +11,8 @@ namespace MyFamilyManager.API.Repositories
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly DbSet<T> entities;
-        protected readonly MyFamilyManagerDbContext dbContext;
         public BaseRepository(MyFamilyManagerDbContext context)
         {
-            this.dbContext = context;
             entities = context.Set<T>();
         }
         public IEnumerable<T> GetAll()

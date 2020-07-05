@@ -20,17 +20,18 @@ namespace MyFamilyManager.API.Services
             var subCategories = _unitOfWork.SubCategoryRepository.GetAll();
             SubCategoryListDto subCategoryList = new SubCategoryListDto
             {
-                SubCaetgories = new List<SubCategoryDto>()
+                SubCategories = new List<SubCategoryDto>()
             };
 
             if (subCategories != null)
             {
                 foreach (var item in subCategories)
                 {
-                    subCategoryList.SubCaetgories.Add(new SubCategoryDto
+                    subCategoryList.SubCategories.Add(new SubCategoryDto
                     {
                         Id = item.Id,
                         Name = item.Name,
+                        CategoryId = item.CategoryId,
                         Description = item.Description
                     });
                 }
@@ -44,14 +45,14 @@ namespace MyFamilyManager.API.Services
             var subCategories = _unitOfWork.SubCategoryRepository.GetAllByCategoryId(categoryId);
             SubCategoryListDto subCategoryList = new SubCategoryListDto
             {
-                SubCaetgories = new List<SubCategoryDto>()
+                SubCategories = new List<SubCategoryDto>()
             };
 
             if (subCategories != null)
             {
                 foreach (var item in subCategories)
                 {
-                    subCategoryList.SubCaetgories.Add(new SubCategoryDto
+                    subCategoryList.SubCategories.Add(new SubCategoryDto
                     {
                         Id = item.Id,
                         Name = item.Name,

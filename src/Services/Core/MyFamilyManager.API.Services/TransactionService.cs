@@ -3,6 +3,8 @@ using MyFamilyManager.API.Core.Interfaces;
 using MyFamilyManager.API.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace MyFamilyManager.API.Services
@@ -15,12 +17,12 @@ namespace MyFamilyManager.API.Services
             _unitOfWork = unitOfWork;
         }
 
-        public TransactionDto GetTransaction(Guid Id)
+        public TransactionResponseDto GetTransaction(Guid Id)
         {
             var transaction = _unitOfWork.TransactionRepository.GetById(Id);
             if (transaction != null)
             {
-                return new TransactionDto
+                return new TransactionResponseDto
                 {
                     FamilyId = transaction.FamilyId,
                     CategoryId = transaction.CategoryId,
@@ -34,20 +36,26 @@ namespace MyFamilyManager.API.Services
         public TransactionListDto GetTransactions()
         {
             var transactions = _unitOfWork.TransactionRepository.GetAll();
+            var categories = _unitOfWork.CategoryRepository.GetAll().ToList();
+            var subcategories = _unitOfWork.SubCategoryRepository.GetAll().ToList();
+
             TransactionListDto transactionList = new TransactionListDto
             {
-                Transations = new List<TransactionDto>()
+                Transations = new List<TransactionResponseDto>()
             };
 
             if (transactions != null)
             {
                 foreach (var item in transactions)
                 {
-                    transactionList.Transations.Add(new TransactionDto
+                    transactionList.Transations.Add(new TransactionResponseDto
                     {
                         CategoryId = item.CategoryId,
                         FamilyId = item.FamilyId,
                         SubCategoryId = item.SubCategoryId,
+                        CategoryName = categories.Where(x => x.Id.Equals(item.CategoryId)).Select(y => y.Name).FirstOrDefault(),
+                        SubCategoryName = subcategories.Where(x => x.Id.Equals(item.SubCategoryId)).Select(y => y.Name).FirstOrDefault(),
+                        TransactionDate = item.CreatedAt,
                         Amount = item.Amount
                     });
                 }

@@ -19,6 +19,8 @@ namespace MyFamilyManager.Mobile.ViewModels
             }
         }
 
+        public Category SelectedCategory { get; set; }
+        public SubCategory SelectedSubCategory { get; set; }
         public NewTransactionViewModel()
         {
             var transaction = new Transaction

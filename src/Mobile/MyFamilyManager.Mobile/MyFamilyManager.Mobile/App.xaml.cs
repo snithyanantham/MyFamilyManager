@@ -14,6 +14,7 @@ namespace MyFamilyManager.Mobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<TransactionDataStore>();
             MainPage = new AppShell();
         }
 

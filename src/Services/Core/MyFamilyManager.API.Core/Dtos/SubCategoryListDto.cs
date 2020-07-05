@@ -6,6 +6,6 @@ namespace MyFamilyManager.API.Core.Dtos
 {
     public class SubCategoryListDto
     {
-        public List<SubCategoryDto> SubCaetgories { get; set; }
+        public List<SubCategoryDto> SubCategories { get; set; }
     }
 }

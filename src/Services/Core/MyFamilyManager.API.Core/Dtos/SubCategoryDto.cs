@@ -6,5 +6,6 @@ namespace MyFamilyManager.API.Core.Dtos
 {
     public class SubCategoryDto :CategoryDto
     {
+        public Guid CategoryId { get; set; }
     }
 }

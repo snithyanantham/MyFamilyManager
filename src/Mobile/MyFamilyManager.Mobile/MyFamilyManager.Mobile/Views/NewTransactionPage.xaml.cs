@@ -28,17 +28,17 @@ namespace MyFamilyManager.Mobile.Views
         {
             base.OnAppearing();
             var categories = _dataStore.GetCategories().GetAwaiter().GetResult();
-            List<Category> categoryList = new List<Category>();
-            foreach (var item in categories.categories)
-            {
-                categoryList.Add(item);
-            }
-            ddlCategory.ItemsSource = categoryList;
+            
+            ddlCategory.ItemsSource = categories.categories;
             ddlCategory.ItemDisplayBinding = new Binding("Name");
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
+            _viewModel.Transaction.CategoryId = _viewModel.SelectedCategory.Id;
+            _viewModel.Transaction.CategoryName = _viewModel.SelectedCategory.Name;
+            _viewModel.Transaction.SubCategoryId = _viewModel.SelectedSubCategory.Id;
+            _viewModel.Transaction.SubCategoryName = _viewModel.SelectedSubCategory.Name;
             MessagingCenter.Send(this, "AddItem", _viewModel.Transaction);
             await Navigation.PopModalAsync();
         }
@@ -59,8 +59,12 @@ namespace MyFamilyManager.Mobile.Views
 
                 string selectedCategoryId = ((Category)ddlCategory.SelectedItem).Id;
 
-                ddlSubCategory.ItemsSource = new List<SubCategory> { new SubCategory { Id = "1", Name = "Others" }, new SubCategory { Id = "2", Name = "Rent" } };
-                ddlSubCategory.ItemDisplayBinding = new Binding("Name");
+                var result = _dataStore.GetSubCategories(selectedCategoryId).GetAwaiter().GetResult();
+                if (result != null)
+                {
+                    ddlSubCategory.ItemsSource = result.SubCategories;
+                    ddlSubCategory.ItemDisplayBinding = new Binding("Name");
+                }
             }
         }
 

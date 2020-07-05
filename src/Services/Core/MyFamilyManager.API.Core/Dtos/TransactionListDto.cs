@@ -6,6 +6,6 @@ namespace MyFamilyManager.API.Core.Dtos
 {
     public class TransactionListDto
     {
-        public List<TransactionDto> Transations { get; set; }
+        public List<TransactionResponseDto> Transations { get; set; }
     }
 }

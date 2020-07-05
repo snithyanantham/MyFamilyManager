@@ -4,7 +4,8 @@ using System.Text;
 
 namespace MyFamilyManager.Mobile.Models
 {
-    public class SubCategory : Category
+    public class TransactionList
     {
+        public List<Transaction> Transations { get; set; }
     }
 }

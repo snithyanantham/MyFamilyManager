@@ -10,7 +10,7 @@ using MyFamilyManager.API.Core.Interfaces;
 
 namespace MyFamilyManager.API.Controllers
 {
-    [Route("[category]")]
+    [Route("[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace MyFamilyManager.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{categoryId}/subcategories")]
+        [Route("{categoryId}/subcategories")]
         public ActionResult<SubCategoryListDto> Get(Guid categoryId)
         {
             return _subCategoryService.GetAllSubCategoriesByCategoryId(categoryId);

@@ -13,11 +13,11 @@
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Category" FontSize="Medium"/>
-            <Picker x:Name="ddlCategory" SelectedIndexChanged="ddlCategory_SelectedIndexChanged" />
+            <Picker x:Name="ddlCategory" SelectedIndexChanged="ddlCategory_SelectedIndexChanged" SelectedItem="{Binding SelectedCategory}" />
             <Label Text="SubCategory" FontSize="Medium"/>
-            <Picker x:Name="ddlSubCategory" SelectedIndexChanged="ddlSubCategory_SelectedIndexChanged"/>
+            <Picker x:Name="ddlSubCategory" SelectedIndexChanged="ddlSubCategory_SelectedIndexChanged" SelectedItem="{Binding SelectedSubCategory}}"/>
             <Label Text="Amount" FontSize="Medium"/>
-            <Entry />
+            <Entry Text="{Binding Transaction.Amount}"/>
             
         </StackLayout>
     </ContentPage.Content>

@@ -35,8 +35,8 @@
         <controls:FlyoutHeader />
     </Shell.FlyoutHeader>
     <FlyoutItem Title="Manage Expenses">
-        <Tab Title="Browse" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <Tab Title="Transactions" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:TransactionsPage}" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Manage Remainders">

@@ -42,6 +42,7 @@ namespace myfamilymanager.api.host
             });
 
             services.AddControllers();
+            services.AddRouting(options => options.LowercaseUrls = true);
             services.AddSwaggerGen(c =>
                 {
                     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My Family Manager", Version = "v1" });

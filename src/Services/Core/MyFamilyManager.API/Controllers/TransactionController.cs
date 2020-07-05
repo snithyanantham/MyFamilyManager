@@ -37,7 +37,7 @@ namespace MyFamilyManager.API.Controllers
                 _transactionService.SaveTransaction(transaction);
                 return StatusCode(201);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500);
             }
@@ -50,7 +50,7 @@ namespace MyFamilyManager.API.Controllers
         }
 
         [HttpGet("{Id}")]
-        public ActionResult<TransactionDto> Get(Guid Id)
+        public ActionResult<TransactionResponseDto> Get(Guid Id)
         {
            return _transactionService.GetTransaction(Id);
         }
