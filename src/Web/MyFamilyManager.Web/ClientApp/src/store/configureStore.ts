@@ -3,11 +3,16 @@ import thunk from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
 import { ApplicationState, reducers } from './';
+import createOidcMiddleware from 'redux-oidc';
+import userManager from '../utils/userManager';
 
 export default function configureStore(history: History, initialState?: ApplicationState) {
+
+    const oidcMiddleware = createOidcMiddleware(userManager);
     const middleware = [
         thunk,
-        routerMiddleware(history)
+        routerMiddleware(history),
+        oidcMiddleware
     ];
 
     const rootReducer = combineReducers({

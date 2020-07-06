@@ -1,5 +1,7 @@
 import * as WeatherForecasts from './WeatherForecasts';
 import * as Counter from './Counter';
+import { reducer as oidc } from 'redux-oidc';
+
 
 // The top-level state object
 export interface ApplicationState {
@@ -12,7 +14,8 @@ export interface ApplicationState {
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
     counter: Counter.reducer,
-    weatherForecasts: WeatherForecasts.reducer
+    weatherForecasts: WeatherForecasts.reducer,
+    oidc
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are

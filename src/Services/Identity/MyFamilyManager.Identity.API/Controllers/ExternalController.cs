@@ -127,7 +127,7 @@
 //            var principal = await _signInManager.CreateUserPrincipalAsync(user);
 //            additionalLocalClaims.AddRange(principal.Claims);
 //            var name = principal.FindFirst(JwtClaimTypes.Name)?.Value ?? user.Id;
-            
+
 //            var isuser = new IdentityServerUser(user.Id)
 //            {
 //                DisplayName = name,

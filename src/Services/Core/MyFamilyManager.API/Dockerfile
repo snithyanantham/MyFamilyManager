@@ -5,7 +5,6 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-
 WORKDIR /src
 COPY ["Services/Core/MyFamilyManager.API/MyFamilyManager.API.csproj", "Services/Core/MyFamilyManager.API/"]
 COPY ["Services/Core/MyFamilyManager.API.Repositories/MyFamilyManager.API.Repositories.csproj", "Services/Core/MyFamilyManager.API.Repositories/"]

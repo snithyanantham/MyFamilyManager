@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using IdentityServer4.EntityFramework.DbContexts;
+using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MyFamilyManager.Identity.API.Data;
 using MyFamilyManager.Identity.API.Models;
 using MyFamilyManager.Identity.API.Services;
@@ -32,6 +35,17 @@ namespace MyFamilyManager.Identity.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigins",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44303")
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .AllowAnyHeader();
+                    });
+            });
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -49,30 +63,30 @@ namespace MyFamilyManager.Identity.API
                 .AddDefaultTokenProviders();
 
             var builder = services.AddIdentityServer()
-               //.AddInMemoryIdentityResources(Config.Ids)
-               //.AddInMemoryApiResources(Config.Apis)
-               //.AddInMemoryClients(Config.Clients);
-               .AddConfigurationStore(options =>
-               {
-                   options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                       mysql => mysql.MigrationsAssembly(migrationsAssembly));
-               })
-               .AddOperationalStore(options =>
-               {
-                   options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                       mysql => mysql.MigrationsAssembly(migrationsAssembly));
-                   options.EnableTokenCleanup = true;
-               })
+               .AddInMemoryIdentityResources(Config.Ids)
+               .AddInMemoryApiResources(Config.Apis)
+               .AddInMemoryClients(Config.Clients)
+               //.AddConfigurationStore(options =>
+               //{
+               //    options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+               //        mysql => mysql.MigrationsAssembly(migrationsAssembly));
+               //})
+               //.AddOperationalStore(options =>
+               //{
+               //    options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+               //        mysql => mysql.MigrationsAssembly(migrationsAssembly));
+               //    options.EnableTokenCleanup = true;
+               //})
                .AddAspNetIdentity<ApplicationUser>();
 
             builder.AddDeveloperSigningCredential();
 
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = $"/Account/Login";
-                options.LogoutPath = $"/Account/Logout";
-                options.AccessDeniedPath = $"/Account/AccessDenied";
-            });
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.LoginPath = $"/Account/Login";
+            //    options.LogoutPath = $"/Account/Logout";
+            //    options.AccessDeniedPath = $"/Account/AccessDenied";
+            //});
 
             services.AddControllersWithViews();
 
@@ -84,6 +98,7 @@ namespace MyFamilyManager.Identity.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                // InitializeDatabase(app);
             }
             else
             {
@@ -92,21 +107,56 @@ namespace MyFamilyManager.Identity.API
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
+            app.UseRouting();
             app.UseIdentityServer();
 
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthentication();
+            app.UseCors("AllowOrigins");
+            // app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
             });
         }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+
+                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                if (!context.Clients.Any())
+                {
+                    foreach (var client in Config.Clients)
+                    {
+                        context.Clients.Add(client.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.IdentityResources.Any())
+                {
+                    foreach (var resource in Config.Ids)
+                    {
+                        context.IdentityResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.ApiResources.Any())
+                {
+                    foreach (var resource in Config.Apis)
+                    {
+                        context.ApiResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+            }
+        }
     }
+
 }

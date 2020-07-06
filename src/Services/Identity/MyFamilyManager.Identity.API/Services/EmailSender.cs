@@ -19,13 +19,13 @@ namespace MyFamilyManager.Identity.API.Services
         {
             var client = new SendGridClient(_optionsEmailSettings.Value.SendGridApiKey);
             var msg = new SendGridMessage();
-            msg.SetFrom(new EmailAddress(_optionsEmailSettings.Value.SenderEmailAddress, "damienbod"));
+            msg.SetFrom(new EmailAddress(_optionsEmailSettings.Value.SenderEmailAddress, "MyFamilyManager"));
             msg.AddTo(new EmailAddress(email, toUsername));
             msg.SetSubject(subject);
             msg.AddContent(MimeType.Text, message);
             //msg.AddContent(MimeType.Html, message);
 
-            msg.SetReplyTo(new EmailAddress(_optionsEmailSettings.Value.SenderEmailAddress, "damienbod"));
+            msg.SetReplyTo(new EmailAddress(_optionsEmailSettings.Value.SenderEmailAddress, "MyFamilyManager"));
 
             var response = await client.SendEmailAsync(msg);
         }
