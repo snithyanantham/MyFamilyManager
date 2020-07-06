@@ -1,8 +1,8 @@
 name: 'Deploy-Heroku' #set whatevername you want to your github job
 on: 
   push:
-    branches: 
-      - 'releases/**' 
+    tags: 
+      - '*' 
 jobs:
   build:
     runs-on: ubuntu-latest
