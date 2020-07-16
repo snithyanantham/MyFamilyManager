@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyFamilyManager.Identity.API.Migrations
+namespace MyFamilyManager.Identity.API.Migrations.ConfigurationDb
 {
-    public partial class InitialConfigurationDbContext : Migration
+    public partial class InitialCreateConfigurationDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
