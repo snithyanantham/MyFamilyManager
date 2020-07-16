@@ -7,7 +7,7 @@ services:
     container_name: myfamilymanager-api
     environment:
       ASPNETCORE_ENVIRONMENT: Production
-      DefaultConnection: ${{ secrets.HEROKU_DB_CONNECTION }}
+      DefaultConnection: local
     build:
       context: .
       dockerfile: Services/Core/MyFamilyManager.API/Dockerfile.heroku
