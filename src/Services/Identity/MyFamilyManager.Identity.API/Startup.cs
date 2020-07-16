@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityModel;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
@@ -63,20 +65,20 @@ namespace MyFamilyManager.Identity.API
                 .AddDefaultTokenProviders();
 
             var builder = services.AddIdentityServer()
-               .AddInMemoryIdentityResources(Config.Ids)
-               .AddInMemoryApiResources(Config.Apis)
-               .AddInMemoryClients(Config.Clients)
-               //.AddConfigurationStore(options =>
-               //{
-               //    options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-               //        mysql => mysql.MigrationsAssembly(migrationsAssembly));
-               //})
-               //.AddOperationalStore(options =>
-               //{
-               //    options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-               //        mysql => mysql.MigrationsAssembly(migrationsAssembly));
-               //    options.EnableTokenCleanup = true;
-               //})
+               //.AddInMemoryIdentityResources(Config.Ids)
+               //.AddInMemoryApiResources(Config.Apis)
+               //.AddInMemoryClients(Config.Clients)
+               .AddConfigurationStore(options =>
+               {
+                   options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                       mysql => mysql.MigrationsAssembly(migrationsAssembly));
+               })
+               .AddOperationalStore(options =>
+               {
+                   options.ConfigureDbContext = b => b.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+                       mysql => mysql.MigrationsAssembly(migrationsAssembly));
+                   options.EnableTokenCleanup = true;
+               })
                .AddAspNetIdentity<ApplicationUser>();
 
             builder.AddDeveloperSigningCredential();
@@ -98,7 +100,7 @@ namespace MyFamilyManager.Identity.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                // InitializeDatabase(app);
+                // SeedData.InitializeDatabase(app);
             }
             else
             {
@@ -121,42 +123,7 @@ namespace MyFamilyManager.Identity.API
             });
         }
 
-        private void InitializeDatabase(IApplicationBuilder app)
-        {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
-
-                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-                context.Database.Migrate();
-                if (!context.Clients.Any())
-                {
-                    foreach (var client in Config.Clients)
-                    {
-                        context.Clients.Add(client.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
-                if (!context.IdentityResources.Any())
-                {
-                    foreach (var resource in Config.Ids)
-                    {
-                        context.IdentityResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-
-                if (!context.ApiResources.Any())
-                {
-                    foreach (var resource in Config.Apis)
-                    {
-                        context.ApiResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-            }
-        }
+       
     }
 
 }

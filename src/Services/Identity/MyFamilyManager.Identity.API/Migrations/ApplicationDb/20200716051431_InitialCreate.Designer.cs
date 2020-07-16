@@ -9,8 +9,8 @@ using MyFamilyManager.Identity.API.Data;
 namespace MyFamilyManager.Identity.API.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200424123350_InitialApplicationDbContext")]
-    partial class InitialApplicationDbContext
+    [Migration("20200716051431_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

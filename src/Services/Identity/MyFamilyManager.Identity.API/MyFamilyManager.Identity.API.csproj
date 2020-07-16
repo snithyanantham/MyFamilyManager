@@ -12,12 +12,6 @@
     <Compile Remove="Migrations\20200424065431_InitialIdentityServerPersistedGrantDbMigration.Designer.cs" />
     <Compile Remove="Migrations\20200424065640_InitialIdentityServerConfigurationDbMigration.cs" />
     <Compile Remove="Migrations\20200424065640_InitialIdentityServerConfigurationDbMigration.Designer.cs" />
-    <Compile Remove="Migrations\ApplicationDb\20200424073252_InitialApplicationDbContextMigration.cs" />
-    <Compile Remove="Migrations\ApplicationDb\20200424073252_InitialApplicationDbContextMigration.Designer.cs" />
-    <Compile Remove="Migrations\ApplicationDb\20200424074225_InitalAplicaionDbContextMigation.cs" />
-    <Compile Remove="Migrations\ApplicationDb\20200424074225_InitalAplicaionDbContextMigation.Designer.cs" />
-    <Compile Remove="Migrations\ApplicationDb\20200424074336_InitialApplicationDbContextMigration.cs" />
-    <Compile Remove="Migrations\ApplicationDb\20200424074336_InitialApplicationDbContextMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
