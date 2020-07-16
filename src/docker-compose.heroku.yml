@@ -5,6 +5,9 @@ services:
   myfamilymanager-api:
     image: myfamilymanager-api
     container_name: myfamilymanager-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      DefaultConnection: ${{ secrets.HEROKU_DB_CONNECTION }}
     build:
       context: .
       dockerfile: Services/Core/MyFamilyManager.API/Dockerfile.heroku
@@ -12,6 +15,8 @@ services:
   myfamilymanager-identity:
     image: myfamilymanager-identity
     container_name: myfamilymanager-identity
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
     build:
       context: .
       dockerfile: Services/Identity/MyFamilyManager.Identity.API/Dockerfile.heroku
@@ -19,6 +24,8 @@ services:
   myfamilymanager-web:
     image: myfamilymanager-web
     container_name: myfamilymanager-web
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
     build:
       context: .
       dockerfile: Web/MyFamilyManager.Web/Dockerfile.heroku
