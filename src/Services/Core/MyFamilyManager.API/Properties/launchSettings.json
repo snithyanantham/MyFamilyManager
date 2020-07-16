@@ -24,6 +24,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
+        "DefaultConnection": "server=v02yrnuhptcod7dk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;database=c70ww52wiower5w7;uid=retwz9ky0g5el2to;password=rs4tt7xi54q2lrp7",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
