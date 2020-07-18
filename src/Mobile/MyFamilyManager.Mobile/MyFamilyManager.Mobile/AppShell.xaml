@@ -4,7 +4,7 @@
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
-       xmlns:local="clr-namespace:MyFamilyManager.Mobile.Views"
+       xmlns:views="clr-namespace:MyFamilyManager.Mobile.Views"
        xmlns:controls="clr-namespace:MyFamilyManager.Mobile.Controls"
        Title="MyFamilyManager.Mobile"
        x:Class="MyFamilyManager.Mobile.AppShell">
@@ -30,26 +30,31 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <!-- Your Pages -->
+    <ShellItem Route="login">
+        <ShellContent 
+                  ContentTemplate="{DataTemplate views:LoginPage}"/>
+    </ShellItem>
+
+    <FlyoutItem Route="home" 
+                Title="Manage Expenses">
+        <ShellContent ContentTemplate="{DataTemplate views:TransactionsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Route="remainders" 
+                Title="Manage Remainders">
+        <ShellContent ContentTemplate="{DataTemplate views:ItemsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Route="about" 
+                Title="About"
+                FlyoutIcon="tab_about.png">
+        <ShellContent ContentTemplate="{DataTemplate views:AboutPage}" />
+    </FlyoutItem>
+
+    <MenuItem Text="Logout" Command="{Binding ExecuteLogout}" />
+
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
     </Shell.FlyoutHeader>
-    <FlyoutItem Title="Manage Expenses">
-        <Tab Title="Transactions" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate local:TransactionsPage}" />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Manage Remainders">
-        <Tab Title="Browse Remainder" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
-        </Tab>
-        <Tab Title="About" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
-        </Tab>
-    </FlyoutItem>
-    <MenuItem Text="About" IconImageSource="tab_about.png">
-    </MenuItem>
-    
-
 
 </Shell>
